@@ -1,4 +1,18 @@
-=== 0.0.4 2010-10-01
+=== 0.0.4 (TODO write date)
 
 * 1 major enhancement:
-  * Initial release
+  * API was coined
+* TODO's:
+  * organize files and extensions for easily writing docs(for example rename History.txt => History.(md|rdoc))
+  * write documentation(for me to not forget what exactly to do)
+  * YARD documentation
+  * Write gem description(long and short)
+  * development gem deps
+  * production gem deps
+  * write tests
+    * organize tests
+    * write tests due to new API
+
+=== older releases
+
+* was yanked because was not enough functional or buggy
