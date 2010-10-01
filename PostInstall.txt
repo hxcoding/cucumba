@@ -1,7 +1,7 @@
+Thanks for installing,don't forget following:
+
+* run cucumba generator
+* add to you config/environments/test.rb:
+    require 'cucumba/drb'
 
 For more information on cucumba, see http://cucumba.rubyforge.org
-
-NOTE: Change this information in PostInstall.txt 
-You can also delete it if you don't want it.
-
-
