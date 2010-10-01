@@ -2,24 +2,13 @@
 require File.expand_path('../../config/boot',  __FILE__)
 begin
   cucumba_vendored_dir = Dir[File.join(Rails.root.to_s,'vendor/gems/cucumba-*')].last
-  require File.join(cucumba_vendored_dir,'lib/cucumba/drb')
+  require File.join(cucumba_vendored_dir,'lib/cucumba/server')
 rescue LoadError
   require 'rubygems'
-  require 'cucumba/drb'
+  require 'cucumba/server'
 rescue LoadError
   puts <<EOF
   cucumba gem seems not installed,install it
 EOF
   exit 1
 end
-
-Cucumba.run_servers!
-
-trap(:INT) do
-  puts
-  Cucumba.stop_servers!
-  exit 0
-end
-
-puts "=> press Ctrl-C to exit and kill servers"
-sleep
