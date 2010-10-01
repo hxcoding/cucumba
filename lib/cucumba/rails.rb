@@ -29,7 +29,7 @@ module Cucumba
     end
 
     def run?
-      @run and (defined?(::Rails) ? ::Rails.env==@environment : true)
+      @run
     end
 
     def model(model_name)
