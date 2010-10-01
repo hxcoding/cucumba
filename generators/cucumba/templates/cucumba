@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require File.expand_path('../../config/boot',  __FILE__)
+require 'cucumba'
+require 'cucumba/drb'
+
+Cucumba.run_servers!
+
+trap(:INT) do
+  puts
+  Cucumba.stop_servers!
+  exit 0
+end
+
+puts "=> press Ctrl-C to exit and kill servers"
+sleep

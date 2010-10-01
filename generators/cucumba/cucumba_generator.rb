@@ -10,8 +10,8 @@ class CucumbaGenerator < Rails::Generator::NamedBase
     record do |m|
       m.directory "config"
       m.template 'config.yml', "config/cucumba.yml"
-      m.directory "lib/tasks"
-      m.file 'cucumba.rake', 'lib/tasks/cucumba.rake'
+      m.directory "script"
+      m.file 'cucumba', 'script/cucumba'
     end
   end
 
