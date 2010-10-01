@@ -5,8 +5,8 @@
   * API was coined
 * minor changes:
   * organized files and extensions for easily writing docs(History.txt => History.md)
-* TODO's:
   * write documentation(for me to not forget what exactly to do)
+* TODO's:
   * YARD documentation generation task
   * Write gem description(long and short)
   * development gem deps

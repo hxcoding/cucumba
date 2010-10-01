@@ -1,10 +1,13 @@
 = cucumba
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/hxcoding/cucumba
 
 == DESCRIPTION:
 
-FIX (describe your package)
+If you develop more than one rails applications
+that communicate with each other and you need to test them
+with something like capybara and also whant to communicate with database -
+this gem will help you
 
 == FEATURES/PROBLEMS:
 
@@ -12,7 +15,15 @@ FIX (describe your package)
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+* comunication with models:
+
+  Cucumba[:main].model("User").create!
+  Cucumba[:main].m(:Article).destroy
+
+* cookies and session(TODO):
+
+  Cucumba[:main].cookies
+  Cucumba[:main].session
 
 == REQUIREMENTS:
 
@@ -26,7 +37,7 @@ FIX (describe your package)
 
 (The MIT License)
 
-Copyright (c) 2010 FIXME full name
+Copyright (c) 2010 hxcoding
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
