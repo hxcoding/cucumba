@@ -2,7 +2,7 @@
 require File.expand_path('../../config/boot',  __FILE__)
 begin
   cucumba_vendored_dir = Dir[File.join(Rails.root.to_s,'vendor/gems/cucumba-*')].last
-  cucumba_server_file = File.join(cucumba_vendored_dir,'lib/cucumba/server.rb')
+  cucumba_server_file = File.join(cucumba_vendored_dir.to_s,'lib/cucumba/server.rb')
   if File.exists?(cucumba_server_file)
     puts 'loading vendored cucumba'
     require cucumba_server_file
@@ -12,7 +12,7 @@ begin
   end
 rescue LoadError
   puts <<EOF
-  cucumba gem seems not installed,install it
+  'cucumba' gem seems not installed,install it
 EOF
   exit 1
 end
