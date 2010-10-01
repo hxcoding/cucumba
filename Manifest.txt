@@ -36,7 +36,6 @@ spec/support/sample_app/app/views/users/index.html.erb
 spec/support/sample_app/app/views/users/new.html.erb
 spec/support/sample_app/app/views/users/show.html.erb
 spec/support/sample_app/config/boot.rb
-spec/support/sample_app/config/cucumba.yml
 spec/support/sample_app/config/database.yml
 spec/support/sample_app/config/environment.rb
 spec/support/sample_app/config/environments/development.rb
@@ -60,7 +59,6 @@ spec/support/sample_app/public/javascripts/effects.js
 spec/support/sample_app/public/javascripts/prototype.js
 spec/support/sample_app/public/robots.txt
 spec/support/sample_app/public/stylesheets/scaffold.css
-spec/support/sample_app/run.sh
 spec/support/sample_app/script/about
 spec/support/sample_app/script/console
 spec/support/sample_app/script/cucumba
@@ -72,6 +70,7 @@ spec/support/sample_app/script/performance/profiler
 spec/support/sample_app/script/plugin
 spec/support/sample_app/script/runner
 spec/support/sample_app/script/server
+spec/support/sample_app_run.sh
 tasks/rspec.rake
 tasks/yard.rake
 website/index.html

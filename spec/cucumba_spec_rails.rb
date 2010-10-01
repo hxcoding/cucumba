@@ -1,18 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require 'net/http'
-
-begin
-  Net::HTTP.start('127.0.0.1', 5001) { |http| http.get('/') }
-rescue Errno::ECONNREFUSED
-  puts <<EOF
-  ##########################################
-  # YOU fORGOT TO RUN SAMPLE RAILS SERVER! #
-  ##########################################
-  cd spec/support/sample_app
-  ./run.sh
-EOF
-  exit 1
-end
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment')
