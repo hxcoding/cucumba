@@ -1,16 +1,21 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'net/http'
 
-require 'fileutils'
-FileUtils.rm_rf File.dirname(__FILE__)+'/support/sample_app/vendor/gems'
-FileUtils.mkdir_p File.dirname(__FILE__)+'/support/sample_app/vendor/gems'
-FileUtils.ln_sf File.expand_path(File.dirname(__FILE__)+'/../'), File.expand_path(File.dirname(__FILE__)+"/support/sample_app/vendor/gems/cucumba-#{Cucumba::VERSION}")
+begin
+  Net::HTTP.start('127.0.0.1', 5001) { |http| http.get('/') }
+rescue Errno::ECONNREFUSED
+  puts <<EOF
+  ##########################################
+  # YOU fORGOT TO RUN SAMPLE RAILS SERVER! #
+  ##########################################
+  cd spec/support/sample_app
+  ./run.sh
+EOF
+  exit 1
+end
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment')
-
-# TODO run generator
-# TODO run migrations
-# TODO run Cucumba server
 
 describe Cucumba do
 
@@ -40,7 +45,7 @@ describe Cucumba do
       Cucumba[:test].m("User").last.password.should == 'secret'
 
       Cucumba[:test].m("User").all.each do |user|
-        user.should be_instance_of(Cucumba::Rails::Model::Instance)
+	user.should be_instance_of(Cucumba::Rails::Model::Instance)
       end
     end
 
