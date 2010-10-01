@@ -21,6 +21,5 @@ namespace :spec do
   Spec::Rake::SpecTask.new(:config) do |t|
     t.spec_opts = ['--options', "spec/spec.opts"]
     t.spec_files = FileList['spec/*_spec.rb']
-    p t.spec_files
   end
 end
