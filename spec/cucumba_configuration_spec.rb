@@ -33,7 +33,6 @@ describe "Cucumba configuration" do
   context "good configuration" do
     it "one server" do
       YAML.should_receive(:load_file).once.and_return(@good_config)
-      Rails.should_receive(:env).twice.and_return('test')
       Rails.should_receive(:root)
 
       [:name, "name"].each do |server|
@@ -52,13 +51,6 @@ describe "Cucumba configuration" do
     it "should not be runned if run false" do
       @good_config.first[:run]=false
       YAML.should_receive(:load_file).once.and_return(@good_config)
-      Rails.should_receive(:root)
-      Cucumba[:name].run?.should be_false
-    end
-
-    it "should not be runned if wrong environment" do
-      YAML.should_receive(:load_file).once.and_return(@good_config)
-      Rails.should_receive(:env).once.and_return('development')
       Rails.should_receive(:root)
       Cucumba[:name].run?.should be_false
     end
