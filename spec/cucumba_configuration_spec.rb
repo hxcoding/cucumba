@@ -1,8 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Cucumba configuration" do
-  include CucumbaTestingHelperMethods
-  include RailsHelperMethods
+  def load_fake_rails_module
+    Object.const_set "Rails", Module.new
+  end
+
+  def remove_fake_rails_module
+    Object.send :remove_const, :Rails
+  end
+
+  def force_cucumba_reload_config
+    Cucumba.send :class_variable_set, :@@config, nil
+  end
 
   before :all do
     load_fake_rails_module
