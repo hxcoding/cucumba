@@ -6,7 +6,6 @@ require './lib/cucumba'
 
 Hoe.plugin :newgem
 Hoe.plugin :website
-# Hoe.plugin :cucumberfeatures
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
@@ -15,7 +14,12 @@ $hoe = Hoe.spec 'cucumba' do
   self.post_install_message = 'PostInstall.txt'#TODO edit this files
   self.rubyforge_name       = self.name
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
-  self.extra_dev_deps       = [['yard','>= 0.6.1'],['bluecloth','2.0.9']]
+  self.extra_dev_deps       = [
+    ['yard',     '>= 0.6.1'],
+    ['bluecloth',   '2.0.9'],
+    ['rails',       '2.3.8'],
+    ['sqlite3-ruby','1.3.1']
+  ]
   self.history_file         = 'History.md'
   self.readme_file          = 'README.rdoc'
 end
