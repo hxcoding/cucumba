@@ -13,6 +13,11 @@ require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/en
 # TODO run Cucumba server
 
 describe Cucumba do
+
+  before :all do
+    `./spec/support/sample_app/script/generate cucumba -f test`
+  end
+
   it "should return instance of Cucumba::Rails" do
     Cucumba[:test].should be_instance_of(Cucumba::Rails)
   end
