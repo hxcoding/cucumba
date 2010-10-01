@@ -1,6 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+
+require 'fileutils'
+FileUtils.rm_rf File.dirname(__FILE__)+'/support/sample_app/vendor/gems'
+FileUtils.mkdir_p File.dirname(__FILE__)+'/support/sample_app/vendor/gems'
+FileUtils.ln_sf File.expand_path(File.dirname(__FILE__)+'/../'), File.expand_path(File.dirname(__FILE__)+"/support/sample_app/vendor/gems/cucumba-#{Cucumba::VERSION}")
+
 ENV["RAILS_ENV"] ||= 'test'
-load File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment.rb')
+require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment')
+
 # TODO run generator
 # TODO run migrations
 # TODO run Cucumba server
