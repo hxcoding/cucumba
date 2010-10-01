@@ -1,3 +1,4 @@
+require 'cucumba/rails/model'
 module Cucumba
   # Cucumba rails client
   class Rails
@@ -30,6 +31,11 @@ module Cucumba
     def run?
       @run and (defined?(::Rails) ? ::Rails.env==@environment : true)
     end
+
+    def model(model_name)
+      Model.new(model_name)
+    end
+    alias :m :model
 
   end
 end
