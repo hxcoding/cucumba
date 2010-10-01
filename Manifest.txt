@@ -61,7 +61,6 @@ spec/support/sample_app/public/robots.txt
 spec/support/sample_app/public/stylesheets/scaffold.css
 spec/support/sample_app/script/about
 spec/support/sample_app/script/console
-spec/support/sample_app/script/cucumba
 spec/support/sample_app/script/dbconsole
 spec/support/sample_app/script/destroy
 spec/support/sample_app/script/generate
