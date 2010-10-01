@@ -11,11 +11,13 @@ Hoe.plugin :website
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'cucumba' do
-  self.developer 'FIXME full name', 'FIXME email'
-  self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
-  self.rubyforge_name       = self.name # TODO this is default value
+  self.developer 'kucaahbe', 'kucaahbe@ukr.net'
+  self.post_install_message = 'PostInstall.txt'#TODO edit this files
+  self.rubyforge_name       = self.name
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
-
+  self.extra_dev_deps       = [['yard','>= 0.6.1'],['bluecloth','2.0.9']]
+  self.history_file         = 'History.md'
+  self.readme_file          = 'README.rdoc'
 end
 
 require 'newgem/tasks'
