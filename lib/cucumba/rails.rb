@@ -33,6 +33,10 @@ module Cucumba
       'druby://'+@host+':'+@drb_port.to_s
     end
 
+    def rails_root
+      @path
+    end
+
     def run?
       @run
     end

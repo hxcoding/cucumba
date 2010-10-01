@@ -33,7 +33,7 @@ describe "Cucumba configuration" do
   context "good configuration" do
     it "one server" do
       YAML.should_receive(:load_file).once.and_return(@good_config)
-      Rails.should_receive(:root)
+      Rails.should_receive(:root).and_return('/path/to/rails/app')
 
       [:name, "name"].each do |server|
 	client = Cucumba[server]
@@ -41,6 +41,7 @@ describe "Cucumba configuration" do
 	client.should be_instance_of(Cucumba::Rails)
 	client.host.should == 'some.host'
 	client.port.should == 4321
+	client.rails_root == '/path/to/rails/app'
 	client.drb_port.should == 5321
 	client.url.should == 'http://some.host:4321'
 	client.drb_url.should == 'druby://some.host:5321'
