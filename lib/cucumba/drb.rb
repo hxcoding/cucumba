@@ -4,6 +4,15 @@ require 'drb'
 module Cucumba
   class Drb
     class Server
+      def has_model?(model)
+        Object.const_defined?(model.to_s.classify)
+      end
+
+      private
+
+      def logger
+        RAILS_DEFAULT_LOGGER
+      end
     end
   end
 end
