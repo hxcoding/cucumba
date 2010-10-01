@@ -11,7 +11,7 @@ class CucumbaGenerator < Rails::Generator::NamedBase
       m.directory "config"
       m.template 'config.yml', "config/cucumba.yml"
       m.directory "script"
-      m.file 'cucumba', 'script/cucumba'
+      m.file 'cucumba', 'script/cucumba', { :chmod => 0755 }
     end
   end
 
