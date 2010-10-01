@@ -4,8 +4,11 @@ module Cucumba
       class NoMethodError < ::NoMethodError
       end
 
-      def initialize(model_name,server)
+      def initialize(model_name,server_url)
+	require 'drb'
+	DRb.start_service
 	model = model.to_s
+	server = DRbObject.new(nil, server_url)
 	if server.has_model?(model)
 	  @model = model
 	else

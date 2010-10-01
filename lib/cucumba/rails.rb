@@ -28,12 +28,16 @@ module Cucumba
       'http://'+@host+':'+@port.to_s
     end
 
+    def drb_url
+      'druby://'+@host+':'+@port.to_s
+    end
+
     def run?
       @run
     end
 
     def model(model_name)
-      Model.new(model_name)
+      Model.new(model_name,drb_url)
     end
     alias :m :model
 

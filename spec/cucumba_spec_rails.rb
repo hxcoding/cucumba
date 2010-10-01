@@ -17,11 +17,9 @@ end
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment')
 
-describe Cucumba do
+describe "Cucumba[:server]" do
 
-  before :all do
-    `./spec/support/sample_app/script/generate cucumba -f test 2>/dev/null`
-  end
+  it "should raise exception if drb server not responding"
 
   it "should return instance of Cucumba::Rails" do
     Cucumba[:test].should be_instance_of(Cucumba::Rails)
