@@ -6,11 +6,12 @@ module Cucumba
     class ServerNotFound < Exception
     end
 
-    attr_reader :host, :port, :description, :environment
+    attr_reader :host, :port, :drb_port, :description, :environment
 
     def initialize(config)
       @host = config[:host]
-      @port = config[:port]
+      @port = config[:port] || 80
+      @drb_port = @port+1000
       @run = config[:run]
       @description = config[:desc]
       @environment = config[:env]
@@ -29,7 +30,7 @@ module Cucumba
     end
 
     def drb_url
-      'druby://'+@host+':'+@port.to_s
+      'druby://'+@host+':'+@drb_port.to_s
     end
 
     def run?

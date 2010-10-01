@@ -41,8 +41,9 @@ describe "Cucumba configuration" do
 	client.should be_instance_of(Cucumba::Rails)
 	client.host.should == 'some.host'
 	client.port.should == 4321
+	client.drb_port.should == 5321
 	client.url.should == 'http://some.host:4321'
-	client.drb_url.should == 'druby://some.host:4321'
+	client.drb_url.should == 'druby://some.host:5321'
 	client.description.should == 'description'
 	client.environment.should == 'test'
 	client.run?.should be_true
