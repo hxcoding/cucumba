@@ -52,7 +52,7 @@ describe "Cucumba[:server]" do
     end
 
     it "should raise exception if model's method does not exists" do
-      lambda { Cucumba[:test].m(:User).blabla }.should raise_exception(Cucumba::Rails::Model::NoMethodError)
+      lambda { Cucumba[:test].m(:User).blabla }.should raise_exception(NoMethodError)
     end
 
   end
