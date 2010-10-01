@@ -13,7 +13,11 @@ module Cucumba
       end
 
       def invoke_method_on_model(model,method,*args)
-        Object.const_get(model).method(method).call(args)
+	if args.count==1 && args[0].empty?
+	  Object.const_get(model).method(method).call
+	else
+	  Object.const_get(model).method(method).call(*args)
+	end
       end
 
       private

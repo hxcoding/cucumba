@@ -27,6 +27,10 @@ describe "Cucumba[:server]" do
       Cucumba[:test].m("User").last.password.should == 'secret'
     end
 
+    it "should invoke method without arguments" do
+      Cucumba[:test].m(:User).columns
+    end
+
     it "should raise exception if model does not exists" do
       lambda { Cucumba[:test].m("Unknown") }.should raise_exception(Cucumba::Rails::Model::NotFoundError)
     end
