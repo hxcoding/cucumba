@@ -1,5 +1,5 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+lib = File.expand_path(File.join(File.dirname(__FILE__),'../lib'))
+$:.unshift(lib) unless $:.include?(lib)
 
 require 'yaml'
 require 'cucumba/rails'
@@ -27,18 +27,6 @@ module Cucumba
     else
       Cucumba::Rails.new(config_for(server_name))
     end
-  end
-
-  # run all cucumba servers that should be run(:run => true)
-  def self.run_servers!
-    config.each do |server_config|
-      Cucumba[server_config[:name]].rails_stop!
-      Cucumba[server_config[:name]].rails_start!
-    end
-  end
-
-  def self.stop_servers!
-    config.each { |server_config| Cucumba[server_config[:name]].rails_stop! }
   end
 
   private
