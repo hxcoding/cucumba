@@ -28,4 +28,5 @@ require 'newgem/tasks'
 Dir['tasks/**/*.rake'].each { |t| load t }
 
 remove_task :default
-task :default => ['spec', 'spec:rails']
+remove_task :spec
+task :default => ['spec:config', 'spec:rails']
