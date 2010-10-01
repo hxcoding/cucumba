@@ -1,10 +1,6 @@
 begin
-  require 'spec'
-rescue LoadError
   require 'rubygems' unless ENV['NO_RUBYGEMS']
   require 'spec'
-end
-begin
   require 'spec/rake/spectask'
 rescue LoadError
   puts <<-EOS
@@ -14,8 +10,16 @@ EOS
   exit(0)
 end
 
-desc "Run the specs under spec/models"
+desc "Run the specs"
 Spec::Rake::SpecTask.new do |t|
   t.spec_opts = ['--options', "spec/spec.opts"]
-  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_files = FileList['spec/*_spec.rb']
+end
+
+namespace :spec do
+  desc "Run the specs with running test rails app"
+  Spec::Rake::SpecTask.new(:rails) do |t|
+    t.spec_opts = ['--options', "spec/spec.opts"]
+    t.spec_files = FileList['spec/rails/*_spec.rb']
+  end
 end

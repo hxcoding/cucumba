@@ -9,11 +9,11 @@
   * YARD documentation generation task
   * Writed gem description
   * development gem deps
-* TODO's:
-  * production gem deps
   * write tests
     * organize tests
     * write tests due to new API
+* TODO's:
+  * production gem deps
 
 older releases
 --------------
