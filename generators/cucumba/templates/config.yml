@@ -1,0 +1,15 @@
+---
+<%- server_names.each_index do |i| -%>
+- :name: <%= server_names[i] %>
+  :host: localhost
+  :port: 500<%= i+1 %>
+  :desc: FIXME <%= server_names[i] %> description
+  :env: test
+<%- if i==0 -%>
+  :run: true
+<%- else -%>
+  :run: false
+  :path: '../<%= server_names[i] %>'
+<%- end -%>
+
+<%- end -%>

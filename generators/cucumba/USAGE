@@ -1,0 +1,9 @@
+Description:
+    Generate cucumba setup
+
+Example:
+    ./script/generate cucumba server1 server2 server3
+
+    This will create:
+        config/cucumba.yml
+	lib/tasks/cucumba.rake
