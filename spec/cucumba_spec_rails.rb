@@ -19,8 +19,6 @@ require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/en
 
 describe "Cucumba[:server]" do
 
-  it "should raise exception if drb server not responding"
-
   it "should return instance of Cucumba::Rails" do
     Cucumba[:test].should be_instance_of(Cucumba::Rails)
   end
@@ -41,10 +39,6 @@ describe "Cucumba[:server]" do
       User.last.password.should == 'secret'
       Cucumba[:test].m("User").last.name.should == 'test user'
       Cucumba[:test].m("User").last.password.should == 'secret'
-
-      Cucumba[:test].m("User").all.each do |user|
-	user.should be_instance_of(Cucumba::Rails::Model::Instance)
-      end
     end
 
     it "should raise exception if model does not exists" do

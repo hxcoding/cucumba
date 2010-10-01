@@ -19,7 +19,7 @@ module Cucumba
 
       def method_missing(method,*args)
         if @server.model_has_method?(@model,method)
-	  @server.invoke_method_on_model(@model,method)
+	  @server.invoke_method_on_model(@model,method,args)
 	else
 	  super
 	end
