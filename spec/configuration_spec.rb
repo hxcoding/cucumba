@@ -82,6 +82,7 @@ describe "Cucumba configuration" do
   end
 
   after :all do
+    force_cucumba_reload_config
     begin
       remove_fake_rails_module
     rescue NameError

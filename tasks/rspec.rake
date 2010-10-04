@@ -1,17 +1,14 @@
 require 'spec'
 require 'spec/rake/spectask'
 
-namespace :spec do
-
-  desc "Run the specs for configuration"
-  Spec::Rake::SpecTask.new(:config) do |t|
-    t.spec_opts = ['--options', "spec/spec.opts"]
-    t.spec_files = FileList['spec/*_spec.rb']
-  end
-
-  desc "Run the specs with running test rails app"
-  Spec::Rake::SpecTask.new(:rails) do |t|
-    t.spec_opts = ['--options', "spec/spec.opts"]
-    t.spec_files = FileList['spec/*_spec_rails.rb']
-  end
+unless File.exists?('.spec/spec.opts')
+  Dir.mkdir('.spec') unless File.exists?('.spec')
+  File.open('.spec/spec.opts','w') { |f| f.write('--color') }
 end
+
+Spec::Rake::SpecTask.new do |t|
+  t.spec_opts = ['--options', ".spec/spec.opts"]
+  t.spec_files = FileList['spec/configuration_spec.rb','spec/rails_spec.rb']
+end
+
+task :default => :spec

@@ -1,9 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path(File.dirname(__FILE__) + '/support/sample_app/config/environment')
-
 describe "Cucumba[:server]" do
+
+  before :all do
+    @pwd =  Dir.pwd; Dir.chdir('spec/support/sample_app')
+
+    require 'active_record'
+
+    active_record_config = YAML.load_file('config/database.yml')
+
+    ActiveRecord::Base.establish_connection(active_record_config["test"])
+    Dir[File.join('app/models/*.rb')].each { |model| load model }
+  end
 
   it "should return instance of Cucumba::Rails" do
     Cucumba[:test].should be_instance_of(Cucumba::Rails)
@@ -55,5 +63,9 @@ describe "Cucumba[:server]" do
       lambda { Cucumba[:test].m(:User).create!(:password => 'secret') }.should raise_exception(RuntimeError,"ActiveRecord::RecordInvalid Validation failed: Name can't be blank")
     end
 
+  end
+
+  after :all do
+    Dir.chdir @pwd
   end
 end
