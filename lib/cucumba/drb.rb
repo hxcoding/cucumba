@@ -13,11 +13,14 @@ module Cucumba
       end
 
       def invoke_method_on_model(model,method,*args)
+	logger.info "Processing #{model}##{method.to_s} (for TODO_IP at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}) [DRb]"
 	if args.count==1 && args[0].empty?
 	  Object.const_get(model).method(method).call
 	else
 	  Object.const_get(model).method(method).call(*args)
 	end
+      rescue Exception => e
+	raise RuntimeError, "#{e.class.to_s} #{e.message}"
       end
 
       private

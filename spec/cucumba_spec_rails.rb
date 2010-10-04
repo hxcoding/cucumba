@@ -31,12 +31,20 @@ describe "Cucumba[:server]" do
       Cucumba[:test].m(:User).columns
     end
 
+    it "should invoke this method" do
+      Cucumba[:test].m(:User).method_with_args(:name, :first => 'bla', :last => 'alb')
+    end
+
     it "should raise exception if model does not exists" do
       lambda { Cucumba[:test].m("Unknown") }.should raise_exception(Cucumba::Rails::Model::NotFoundError)
     end
 
     it "should raise exception if model's method does not exists" do
       lambda { Cucumba[:test].m(:User).blabla }.should raise_exception(NoMethodError)
+    end
+
+    it "should raise exception if exception appears on server" do
+      lambda { Cucumba[:test].m(:User).create!(:password => 'secret') }.should raise_exception(RuntimeError,"ActiveRecord::RecordInvalid Validation failed: Name can't be blank")
     end
 
   end
