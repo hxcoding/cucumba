@@ -1,3 +1,12 @@
+0.0.5 (unreleased)
+-----
+
+* TODO add features:
+  * add method eval(Cucumba[:main].eval("1+1"))
+  * invoking rake tasks
+  * handling hard attributes(:user, :email => 'bla') (add try to invoke .call(args) and .call(\*args))
+  * optimize testing
+
 0.0.4 (01.10.2010)
 -----------------------
 
@@ -13,8 +22,6 @@
   * write tests
     * organize tests
     * write tests due to new API
-* TODO's:
-  * production gem deps
 
 older releases
 --------------
