@@ -1,11 +1,15 @@
-0.0.5 (unreleased)
------
+0.0.6 (ureleased)
 
-* TODO add features:
-  * add method eval(Cucumba[:main].eval("1+1"))
+* TODO
   * invoking rake tasks
-  * handling hard attributes(:user, :email => 'bla') (add try to invoke .call(args) and .call(\*args))
   * optimize testing
+
+0.0.5 (04.10.2010)
+------------------
+
+* added:
+  * [FIX] handling hard attributes(:user, :email => 'bla')
+  * method execute ( Cucumba[:main].e("1+1") )
 
 0.0.4 (01.10.2010)
 -----------------------
