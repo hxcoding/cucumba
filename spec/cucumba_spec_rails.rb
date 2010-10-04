@@ -23,12 +23,20 @@ describe "Cucumba[:server]" do
       (User.all.count - users_count_was).should == 1
       User.last.name.should == 'test user'
       User.last.password.should == 'secret'
-      Cucumba[:test].m("User").last.name.should == 'test user'
-      Cucumba[:test].m("User").last.password.should == 'secret'
     end
 
     it "should invoke method without arguments" do
       Cucumba[:test].m(:User).columns
+    end
+
+    it "should eval code in server side" do
+      Cucumba[:test].eval("User.create!(:name => 'some name', :password => 'zecred')")
+      User.last.name.should == 'some name'
+      User.last.password == 'zecred'
+    end
+
+    it "should eval code and raise exception if exception appears on server side" do
+      lambda { Cucumba[:test].eval("UnknownModel") }.should raise_exception(RuntimeError,"")
     end
 
     it "should invoke this method" do
