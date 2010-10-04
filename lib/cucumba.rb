@@ -5,7 +5,6 @@ require 'yaml'
 require 'cucumba/rails'
 
 module Cucumba
-  VERSION = '0.0.5'
 
   class ConfigNotFound < StandardError
   end
