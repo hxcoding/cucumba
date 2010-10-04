@@ -13,10 +13,22 @@ module Cucumba
       end
 
       def invoke_method_on_model(model,method,*args)
-	logger.info "Processing #{model}##{method.to_s} (for TODO_IP at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}) [DRb]"
+	logger.info "Processing #{model}.#{method.to_s} (for TODO_IP at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}) [DRb]"
 	Object.const_get(model).method(method).call(*args.first)
       rescue Exception => e
+	handle_exception(e)
 	raise RuntimeError, "#{e.class.to_s} #{e.message}"
+      end
+
+      def execute(code)
+	logger.info "Evaluating code (for TODO_IP at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}) [DRb]"
+	logger.info '---'
+	logger.info code
+	logger.info '---'
+        Object.send :eval, code
+      rescue Exception => e
+	handle_exception(e)
+	raise RuntimeError, e.message
       end
 
       private
@@ -24,6 +36,12 @@ module Cucumba
       def logger
         RAILS_DEFAULT_LOGGER
       end
+
+      def handle_exception(exception)
+	logger.info "#{exception.class.to_s}: #{exception.message}"
+	exception.backtrace.each { |t| logger.info t }
+      end
+
     end
   end
 end

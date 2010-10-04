@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumba}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kucaahbe"]
-  s.date = %q{2010-10-02}
+  s.date = %q{2010-10-04}
   s.description = %q{If you develop more than one rails applications
 that communicate with each other and you need to test them
 with something like capybara and also whant to communicate with database -

@@ -1,6 +1,3 @@
-require 'drb'
-DRb.start_service
-
 module Cucumba
   class Rails
     class Model
@@ -8,8 +5,8 @@ module Cucumba
       class NotFoundError < Exception
       end
 
-      def initialize(model_name,server_url)
-	@server = DRbObject.new(nil, server_url)
+      def initialize(model_name,server)
+	@server = server
 	if @server.has_model?(model_name)
 	  @model = model_name
 	else

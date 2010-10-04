@@ -1,4 +1,6 @@
+require 'drb'
 require 'cucumba/rails/model'
+
 module Cucumba
   # Cucumba rails client
   class Rails
@@ -22,6 +24,7 @@ module Cucumba
       end
       @path = File.expand_path(@path)
       @pid_file = File.join(@path,'tmp/pids/server.pid')
+      @server = DRbObject.new(nil, drb_url)
     end
 
     # url where rails application lives
@@ -42,9 +45,16 @@ module Cucumba
     end
 
     def model(model_name)
-      Model.new(model_name,drb_url)
+      Model.new(model_name,@server)
     end
     alias :m :model
 
+    def execute(code)
+      @server.execute(code)
+    end
+    alias :e :execute
+
   end
 end
+
+DRb.start_service
