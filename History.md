@@ -6,6 +6,7 @@
   * ability to properly run miltiple servers
   * add loadign rails builtin controller
   * add drb\_port option to cucumba.yml
+  * add drb\_ip to config file(drb ip to run on)
 
 0.0.6
 
