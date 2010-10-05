@@ -47,6 +47,7 @@ module Cucumba
 end
 
 begin
-  DRb.start_service(Cucumba[:_self_].drb_url, Cucumba::Drb::Server.new) if Cucumba[:_self_].run?
+  DRb.start_service("druby://127.0.0.1:#{Cucumba[:_self_].drb_port}", Cucumba::Drb::Server.new) if Cucumba[:_self_].run?
 rescue Errno::EADDRINUSE
+  puts "=> Cucumba DRb server not starting, port #{Cucumba[:_self_].drb_port} already in use"
 end

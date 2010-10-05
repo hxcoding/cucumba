@@ -3,7 +3,6 @@
   * showing rails load error(add bad envoronment and do there mistage(concat "some string"))
   * routes(Cucumba[:main].routes.root\_url)
   * hadling privileged ports(80) with sudo,and fix url method for it
-  * fix starting drb server(it should run on 127.0.0.1) and not on host described in config/cucumba.yml
   * ability to properly run miltiple servers
   * refactory internal stuff(Cucumba::Rails => Cucumba::Railz, Cucumba:Railz::Model => Cucumba::Railz::Klass)
   * add loadign rails builtin controller
@@ -13,6 +12,7 @@
 
 * starting to use bundler
 * optimized testing
+* fixed starting drb server(it should run on 127.0.0.1) and not on host described in config/cucumba.yml
 
 0.0.5 (04.10.2010)
 ------------------
