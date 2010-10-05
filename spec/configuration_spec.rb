@@ -38,7 +38,7 @@ describe "Cucumba configuration" do
       [:name, "name"].each do |server|
 	client = Cucumba[server]
 
-	client.should be_instance_of(Cucumba::Rails)
+	client.should be_instance_of(Cucumba::Railz)
 	client.host.should == 'some.host'
 	client.port.should == 4321
 	client.rails_root == '/path/to/rails/app'
@@ -76,7 +76,7 @@ describe "Cucumba configuration" do
     it "should raise exception if server not found in config" do
       Rails.should_receive(:root)
       YAML.should_receive(:load_file).once.and_return(@good_config)
-      lambda { Cucumba[:wrong] }.should raise_exception(Cucumba::Rails::ServerNotFound)
+      lambda { Cucumba[:wrong] }.should raise_exception(Cucumba::Railz::ServerNotFound)
     end
 
   end

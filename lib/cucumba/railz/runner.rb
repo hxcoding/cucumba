@@ -3,7 +3,7 @@ require 'net/http'
 
 module Cucumba
 
-  class Rails
+  class Railz
 
     def rails_start!
       if run?

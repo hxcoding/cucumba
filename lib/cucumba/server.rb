@@ -1,7 +1,7 @@
 lib = File.expand_path(File.join(File.dirname(__FILE__),'..'))
 $:.unshift(lib) unless $:.include?(lib)
 
-require 'cucumba/rails/runner'
+require 'cucumba/railz/runner'
 
 Cucumba.servers_start!
 trap(:INT) do

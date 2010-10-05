@@ -2,7 +2,7 @@ lib = File.expand_path(File.join(File.dirname(__FILE__),'../lib'))
 $:.unshift(lib) unless $:.include?(lib)
 
 require 'yaml'
-require 'cucumba/rails'
+require 'cucumba/railz'
 
 module Cucumba
 
@@ -22,22 +22,22 @@ module Cucumba
   def self.[] server_name
     server_name = server_name.to_s
     if server_name == "_self_"
-      Cucumba::Rails.new(config.first)
+      Cucumba::Railz.new(config.first)
     else
-      Cucumba::Rails.new(config_for(server_name))
+      Cucumba::Railz.new(config_for(server_name))
     end
   end
 
   private
 
-  def self.config_for(server_name)
+  def self.config_for server_name
     config.each do |server_config|
       if server_config[:name]==server_name
 	return server_config
 	break
       end
     end
-    raise Cucumba::Rails::ServerNotFound, "server with '#{server_name}' not described in config file"
+    raise Cucumba::Railz::ServerNotFound, "server with name '#{server_name}' not described in config file"
   rescue Errno::ENOENT  # yml file not found
     raise ConfigNotFound, "config not found, run 'cucumba' generator"
   end

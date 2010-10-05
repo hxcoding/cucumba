@@ -1,9 +1,13 @@
 require 'drb'
-require 'cucumba/rails/model'
+require 'cucumba/railz/klass'
 
 module Cucumba
-  # Cucumba rails client
-  class Rails
+  # This class represents you rails application
+  # You get it when through
+  #
+  #   Cucumba[:main]
+  # for instance
+  class Railz
 
     class ServerNotFound < Exception
     end
@@ -36,6 +40,9 @@ module Cucumba
       'druby://'+@host+':'+@drb_port.to_s
     end
 
+    #--
+    # TODO move to routes
+    #++
     def rails_root
       @path
     end
@@ -44,10 +51,10 @@ module Cucumba
       @run
     end
 
-    def model(model_name)
-      Model.new(model_name,@server)
+    def class(class_name)
+      Klass.new(class_name,@server)
     end
-    alias :m :model
+    alias :c :class
 
     def execute(code)
       @server.execute(code)
