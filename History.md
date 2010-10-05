@@ -8,7 +8,7 @@
   * add drb\_port option to cucumba.yml
   * add drb\_ip to config file(drb ip to run on)
 
-0.0.6
+0.0.6 (05.10.2010)
 
 * starting to use bundler
 * optimized testing
